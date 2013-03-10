@@ -12,19 +12,19 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
         html {
-            background-color: #000;
+            background-color: #444;
             color: #FFF;
         }
         body {
             padding-top: 20px;
             padding-bottom: 40px;
-            background: #000 url(img/hammer-figure.png) no-repeat right 30px;
+            background: #444 url(img/hammer-figure.png) no-repeat right 30px;
             color: #FFF;
         }
         /* Yellow: #ffca3f; Gold: #a98829;*/
         a,
-        .masthead h3 { color: #ffca3f; }
-        a:hover, a:focus, a:active { color: #a98829; }
+        .masthead h3 { color: #fc0; }
+        a:hover, a:focus, a:active { color: #fc0; }
         hr {
             border-top-color: #ffca3f;
             border-bottom-color: #a98829;
@@ -37,44 +37,22 @@
         .nav-pills > .active > a, 
         .nav-pills > .active > a:hover, 
         .nav-pills > .active > a:focus {
-            background-color: #ffca3f;
+            background-color: #fc0;
             color: #000;
         }
 
-        .btn-success {
+        .btn-download {
           color: #000;
           text-shadow: 0 -1px 0 rgba(255,255,255,0.5);
-          background-color: #ffca3f;
-          *background-color: #ffca3f;
-          background-image: -moz-linear-gradient(top, #ffca3f, #a98829);
-          background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffca3f), to(#a98829));
-          background-image: -webkit-linear-gradient(top, #ffca3f, #a98829);
-          background-image: -o-linear-gradient(top, #ffca3f, #a98829);
-          background-image: linear-gradient(to bottom, #ffca3f, #a98829);
-          background-repeat: repeat-x;
+          background: #fc0;
           border-color: #a98829 #a98829 #a98829;
           border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffca3f', endColorstr='#ffa98829', GradientType=0);
-          filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
         }
 
-        .btn-success:hover,
-        .btn-success:focus,
-        .btn-success:active,
-        .btn-success.active,
-        .btn-success.disabled,
-        .btn-success[disabled] {
-          color: #000;
-          background-color: #a98829;
-          *background-color: #a98829;
+        .btn-download:hover,
+        .btn-download:active {
+            background: #fc0;
         }
-
-        .btn-success:active,
-        .btn-success.active {
-          background-color: #a98829 \9;
-        }
-
-
 
 
         /* Custom container */
@@ -82,7 +60,7 @@
             margin: 0 auto;
             max-width: 700px;
             padding: 20px 30px;
-            background: rgba(0,0,0,.7);
+            background: rgba(0,0,0,.6);
         }
         .container-narrow > hr {
             margin: 0;
@@ -138,7 +116,7 @@
     <div class="jumbotron" id="touch-area">
         <h1>You can <span class="gesture" id="gesture-log">touch</span> this</h1>
         <p class="lead">A javascript library for multi-touch gestures.</p>
-        <p><a class="btn btn-large btn-success relace-version" href="https://github.com/EightMedia/hammer.js/tree/v1.0.0/dist">
+        <p><a class="btn btn-large btn-download relace-version" href="https://github.com/EightMedia/hammer.js/tree/v1.0.0/dist">
                 Download Hammer.js <small class="relace-version">v1.0.0</small></a>
         </p>
         <p>

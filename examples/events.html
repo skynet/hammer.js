@@ -142,6 +142,8 @@
 
         <li><strong>scale</strong>  <span id="log-prop-scale"></span></li>
         <li><strong>rotation</strong> <span id="log-prop-rotation"></span>&deg;</li>
+
+        <li><strong>target</strong> <span id="log-prop-target"></span></li>
     </ul>
 </div>
 
@@ -155,6 +157,7 @@
     Proin tristique luctus leo vitae feugiat. Donec sit amet ipsum mi, nec bibendum sem. Nullam sodales aliquet venenatis.
     </p>
 </div>
+<!--
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at erat felis. Donec ornare ligula non nibh vulputate sollicitudin. Cras sodales eros a velit pulvinar vehicula. In sed lorem lectus, vel dapibus nulla. Mauris lacus massa, volutpat vel suscipit at, lacinia condimentum libero. Praesent nec metus ligula. Morbi porttitor rhoncus mattis.
 </p>
@@ -164,7 +167,7 @@
 <p>
     Ut molestie, lectus vel pharetra pharetra, nunc libero interdum ligula, eget vulputate purus nulla sit amet turpis. Aliquam volutpat porttitor erat ac volutpat. Donec ligula elit, tincidunt non congue id, iaculis feugiat sem. Phasellus vestibulum mi id enim interdum imperdiet. Ut dolor ante, tempus sit amet ornare a, faucibus sed massa. Curabitur adipiscing, mauris eget vestibulum lacinia, nisl lorem viverra velit, vitae facilisis urna erat et est. Pellentesque fringilla metus libero, at accumsan nisl. Etiam nisl lorem, placerat ut tristique vel, luctus id nulla. Sed vel nunc ut justo volutpat eleifend ac nec risus. Praesent at viverra tellus. Maecenas semper pellentesque quam, et bibendum nisl eleifend sit amet. Donec sed elit eget magna dictum dignissim.
 </p>
-
+-->
 <h2>Event log</h2>
 <pre id="event-log"></pre>
 
@@ -211,7 +214,7 @@
     // log properties
     var properties = ['gesture','center','deltaTime','angle','direction',
         'distance','deltaX','deltaY','velocityX','velocityY', 'pointerType',
-        'scale','rotation','touches'];
+        'scale','rotation','touches','target'];
 
     function logEvent(ev) {
         if(!ev.gesture) {
@@ -230,14 +233,19 @@
         for(var i= 0,len=properties.length; i<len; i++) {
             var prop = properties[i];
             var value = ev.gesture[prop];
-            if(prop == 'center') {
-                value = value.pageX +"x"+ value.pageY;
-            }
-            else if(prop == 'gesture') {
-                value = ev.type;
-            }
-            else if(prop == 'touches') {
-                value = ev.gesture.touches.length;
+            switch(prop) {
+                case 'center':
+                    value = value.pageX +"x"+ value.pageY;
+                    break;
+                case 'gesture':
+                    value = ev.type;
+                    break;
+                case 'target':
+                    value = ev.gesture.target.tagName;
+                    break;
+                case 'touches':
+                    value = ev.gesture.touches.length;
+                    break;
             }
             getLogElement('prop', prop).innerHTML = value;
         }
@@ -256,12 +264,18 @@
 
     // start!
     var hammertime = Hammer(getEl('hitarea'), {
-            prevent_default: true
+            prevent_default: true,
+            no_mouseevents: true
         })
         .on(all_events.join(" "), logEvent);
 
 
+    var debug_el = getEl('event-log');
+    function debug(val) {
+        debug_el.innerHTML = val.toString();
+    }
+
 </script>
-<script src="assets/js/ga.js"></script>
+<script src="assets/js/ga.js" async></script>
 </body>
 </html>

@@ -205,8 +205,21 @@
         <div class="pull-left">
             <a href="https://twitter.com/share"
                class="twitter-share-button"
-               data-text="You can touch this! Brand new Hammer.js #touch #javascript">Tweet</a>
+               data-text="Stop, hammertime! Touch gestures with this library #touch #javascript #hammerjs">Tweet</a>
             <script>
+
+                var twitter_msgs = [
+                    'Super awesome touch library! #touch #javascript #hammerjs',
+                    'OMG i can now use touch gestures at my webapp! #touch #javascript #hammerjs',
+                    'You can touch this! Easy touch events for you page #touch #javascript #hammerjs',
+                    'Stop, hammertime! Touch gestures with this library #touch #javascript #hammerjs'
+                ];
+
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                $(".twitter-share-button").attr("data-text", twitter_msgs[getRandomInt(0,twitter_msgs.length-1)]);
+
                 !function(d,s,id){
                     var js,fjs=d.getElementsByTagName(s)[0];
                     if(!d.getElementById(id)){

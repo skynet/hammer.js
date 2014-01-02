@@ -115,12 +115,12 @@
     <div class="jumbotron" id="touch-area">
         <h1>You can <span class="gesture" id="gesture-log">touch</span> this</h1>
         <p class="lead">A javascript library for multi-touch gestures.</p>
-        <p><a class="btn btn-large btn-download relace-version" href="https://github.com/EightMedia/hammer.js/tree/v1.0.0/">
-                Download Hammer.js <small class="relace-version">v1.0.0</small></a>
+        <p><a class="btn btn-large btn-download replace-version" href="https://github.com/EightMedia/hammer.js/tree/v1.0.0/">
+                Download Hammer.js <small class="replace-version">v1.0.0</small></a>
         </p>
         <p>
             <a href="https://github.com/EightMedia/hammer.js">View Source on GitHub &rsaquo;</a><br>
-            <a class="relace-version" href="https://github.com/EightMedia/hammer.js/wiki">Read documentation &rsaquo;</a>
+            <a class="replace-version" href="https://github.com/EightMedia/hammer.js/wiki">Read documentation &rsaquo;</a>
         </p>
     </div>
 
@@ -166,7 +166,6 @@
             <p>These examples are only for showing what you could do with Hammer. It's not an component library.</p>
             <ul class="inline">
                 <li><a href="examples/events.html">Event logger</a></li>
-                <li><a href="examples/jquery.html">jQuery plugin</a></li>
                 <li><a href="examples/pull-to-refresh.html">Pull-to-refresh</a></li>
                 <li><a href="examples/carousel.html">Carousel</a></li>
             </ul>
@@ -190,7 +189,7 @@
         // replace version number with the latest version
         var latest_version = '1.0.6';
 
-        $(".relace-version").each(function() {
+        $(".replace-version").each(function() {
             var el = $(this);
             if(this.tagName == 'A') {
                 el.attr("href", el.attr("href").replace('v1.0.0', latest_version));

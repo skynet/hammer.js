@@ -270,7 +270,7 @@
         }
 
         var hammertime = new Hammer(element[0], { drag_lock_to_axis: true });
-        element.on("release dragleft dragright swipeleft swiperight", handleHammer);
+        hammertime.on("release dragleft dragright swipeleft swiperight", handleHammer);
     }
 
 

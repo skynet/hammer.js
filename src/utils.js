@@ -201,14 +201,14 @@ Hammer.utils = {
 
     // with css properties for modern browsers
     Hammer.utils.each(['webkit', 'khtml', 'moz', 'Moz', 'ms', 'o', ''], function(vendor) {
-      Hammer.utils.each(css_props, function(prop) {
+      Hammer.utils.each(css_props, function(value, prop) {
           // vender prefix at the property
           if(vendor) {
             prop = vendor + prop.substring(0, 1).toUpperCase() + prop.substring(1);
           }
           // set the style
           if(prop in element.style) {
-            element.style[prop] = prop;
+            element.style[prop] = value;
           }
       });
     });
@@ -225,6 +225,42 @@ Hammer.utils = {
       element.ondragstart = function() {
         return false;
       };
+    }
+  },
+
+
+  /**
+   * reverts all changes made by 'stopDefaultBrowserBehavior'
+   * @param   {HtmlElement}   element
+   * @param   {Object}        css_props
+   */
+  startDefaultBrowserBehavior: function startDefaultBrowserBehavior(element, css_props) {
+    if(!css_props || !element || !element.style) {
+      return;
+    }
+
+    // with css properties for modern browsers
+    Hammer.utils.each(['webkit', 'khtml', 'moz', 'Moz', 'ms', 'o', ''], function(vendor) {
+      Hammer.utils.each(css_props, function(value, prop) {
+          // vender prefix at the property
+          if(vendor) {
+            prop = vendor + prop.substring(0, 1).toUpperCase() + prop.substring(1);
+          }
+          // reset the style
+          if(prop in element.style) {
+            element.style[prop] = '';
+          }
+      });
+    });
+
+    // also the enable onselectstart
+    if(css_props.userSelect == 'none') {
+      element.onselectstart = null;
+    }
+
+    // and enable ondragstart
+    if(css_props.userDrag == 'none') {
+      element.ondragstart = null;
     }
   }
 };
